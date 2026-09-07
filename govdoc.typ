@@ -41,7 +41,7 @@
     margin: (top: 1.5cm, bottom: 2cm, left: 3cm, right: 2cm)
   )
 
-  // TH Sarabun New 16pt (ระยะบรรทัดปกติ 1 เท่า หรือ Single)
+  // TH Sarabun New 16pt
   set text(
     font: ("TH Sarabun New", "THSarabunNew"),
     size: 16pt,
@@ -64,9 +64,12 @@
     #image("garuda.svg", height: 3cm)
   ]
 
-  // 2. แถว "ที่" ชิดซ้าย และ "ส่วนราชการ" ขยับไปเริ่มที่ 8.8 ซม. เพื่อไม่ให้ชิดครุฑเกินไป
+  // เว้นระยะเล็กน้อยเพื่อให้บรรทัด "ที่" ตรงกับระดับปลายเท้าล่างสุดของครุฑ
+  #v(0.25cm)
+
+  // 2. แถว "ที่" ชิดซ้าย และ "ส่วนราชการ" ขยับไปเริ่มที่ระยะ 10.2 ซม. (โปร่งตามตัวอย่างภาพที่ 2)
   grid(
-    columns: (8.8cm, 1fr),
+    columns: (10.2cm, 1fr),
     [ที่ #h(0.4em) #thnum(id)],
     [
       #set par(leading: 0.45em)
@@ -74,7 +77,7 @@
     ]
   )
 
-  v(6pt) // 1 Enter + Before 6 pt
+  v(10pt) // Enter + Before 6 pt
 
   // 3. วัน เดือน ปี (เกาะเส้นกึ่งกลางหน้ากระดาษ 7.5 ซม. พอดี)
   grid(
@@ -83,7 +86,7 @@
     [#thnum(day) #h(0.5em) #thnum(month) #h(0.5em) #thnum(year)]
   )
 
-  v(6pt) // 1 Enter + Before 6 pt
+  v(10pt) // Enter + Before 6 pt
 
   // 4. แถว เรื่อง, เรียน, อ้างถึง, สิ่งที่ส่งมาด้วย (เว้น ๒ เคาะ)
   let header_rows = (
@@ -101,17 +104,17 @@
 
   grid(
     columns: (auto, 1fr),
-    row-gutter: 6pt + 0.58em,
+    row-gutter: 8pt + 0.58em,
     column-gutter: 0.3em,
     ..header_rows
   )
 
-  v(6pt) // 1 Enter + Before 6 pt
+  v(10pt) // Enter + Before 6 pt
 
   // 5. เนื้อหาหนังสือ
   body
 
-  v(12pt) // ก่อนคำลงท้าย Enter + Before 12 pt
+  v(14pt) // ก่อนคำลงท้าย Enter + Before 12 pt
 
   // 6. คำลงท้าย และ ลายมือชื่อ
   grid(
