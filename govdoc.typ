@@ -35,7 +35,7 @@
   contact: [],
   body
 ) = {
-  // ขอบกระดาษ A4: บน 1.5 ซม. ล่าง 2 ซม. ซ้าย 3 ซม. ขวา 2 ซม.[cite: 5]
+  // ขอบกระดาษ A4: บน 1.5 ซม. ล่าง 2 ซม. ซ้าย 3 ซม. ขวา 2 ซม.
   set page(
     paper: "a4",
     margin: (top: 1.5cm, bottom: 2cm, left: 3cm, right: 2cm)
@@ -64,12 +64,11 @@
     #image("garuda.svg", height: 3cm)
   ]
 
-  // ปรับระยะลดลงมา 1 บรรทัด (จาก -1.85cm เหลือ -1.25cm)
   v(-1.25cm)
 
-  // 2. แถว "ที่" ชิดซ้าย และ "ส่วนราชการ" วางขวา[cite: 5]
+  // 2. แถว "ที่" ชิดซ้าย และ "ส่วนราชการ" เคาะขวา 2 เคาะ -> 10.5cm[cite: 5]
   grid(
-    columns: (10.0cm, 1fr),
+    columns: (10.5cm, 1fr),
     [ที่ #h(0.4em) #thnum(id)],
     [
       #set par(leading: 0.45em)
@@ -79,7 +78,7 @@
 
   v(6pt) // Enter + Before 6 pt[cite: 5]
 
-  // 3. วัน เดือน ปี (ร่นไปทางซ้าย 3 เคาะ -> 8.0cm)
+  // 3. วัน เดือน ปี (8.0cm)[cite: 5]
   grid(
     columns: (8.0cm, 1fr),
     [],
@@ -116,18 +115,24 @@
 
   v(12pt) // ก่อนคำลงท้าย Enter + Before 12 pt[cite: 5]
 
-  // 6. คำลงท้าย และ ลายมือชื่อ (ร่นไปทางซ้าย 3 เคาะ ตรงแนวกับวันที่ -> 8.0cm)
+  // 6. คำลงท้าย และ ลายมือชื่อ
+  // คำลงท้ายอยู่ที่ 8.0cm
+  // กลุ่มชื่อผู้ลงนามจัดกึ่งกลางเทียบกับแนวคำลงท้าย (ความกว้างคำลงท้าย ~3.6cm ศูนย์กลางอยู่ที่ 8.0cm + 1.8cm)
   grid(
     columns: (8.0cm, 1fr),
     [],
     [
-      #align(left)[#signoff]
+      #signoff
       #v(2.0cm) // พื้นที่ 4 Enter สำหรับลงลายมือชื่อ[cite: 5]
-      #box(width: 100%, align(center)[
-        #signer_name \
-        #v(2pt)
-        #signer_pos
-      ])
+      #place(dx: 1.8cm)[
+        #align(center)[
+          #box(width: 10cm)[
+            #signer_name \
+            #v(2pt)
+            #signer_pos
+          ]
+        ]
+      ]
     ]
   )
 
